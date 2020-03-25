@@ -1,6 +1,16 @@
 function [output] = deseaseCourse(person)
-%UNTITLED8 Summary of this function goes here
-%   Detailed explanation goes here
+%DESEASECOURSE establish what is the course of the desease of each patient;
+% it is based on the statistics data for Covid-19 available at March the
+% 19th 2020.
+%
+% The infected person might get a standard course of the desease with mild
+% sympthoms, might required to get hospitalized or might die
+%
+%   
+%   original author: Davide Grande
+%   date: 19-March-2020
+%
+
 
 outcome = randi(100,1);
 if outcome <= 80
