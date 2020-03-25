@@ -1,6 +1,7 @@
 classdef PersonClassV2
-%%PERSONCLASSV2 is an updated of PersonClass class.
-% It still represents a person within the population
+%%PERSONCLASSV2 implements a class resembling a person within a population
+%
+% It represents a person within the population
 %   inputs: [ healty sick infective sick_in_isolation ...
 %              fatal_sickness hospitalized healing dead immune age ... 
 %               potential_infections infected_people time_to_heal time_for_the_desease_to_activate]     
