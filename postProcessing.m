@@ -1,6 +1,5 @@
-%% Post-processing script 
-% Plots of the interesting simulation variables 
-%
+%% Post-processing script to be called at the end of a simulation
+% Plots of the relevant simulation variables 
 %   
 %   original author: Davide Grande
 %   date: 19-March-2020

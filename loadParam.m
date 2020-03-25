@@ -1,4 +1,8 @@
 %% Script containing the parameters of the simulation
+%   
+%   original author: Davide Grande
+%   date: 19-March-2020
+%
 
 % Generic parameters to be edited for the simulation
 num_months = 8;                 % [months]: timespan of the simulation 

@@ -1,13 +1,11 @@
 function [out1, out2, out3, out4, out5] = tryToInfectNewPerson(person, number, infecting_person, tot_infected, num_infected_per_day, iTime, iPeople, dbg_msg)
-%TRYTOINFECTNEWPERSON is called to establish which people are met (and
-%possibly infected) by an already infected person during his incubation
-%period.
+%%TRYTOINFECTNEWPERSON is called to establish which people are met (and
+%%possibly infected) by an already infected person during his incubation
+%%period.
 %
 %   Before showing sympthoms and thus starting the quaratine, each person
-%   has the chance to infect same other people. This function is called
-%   when an infected person has the chance to infect someone else, and gets
-%   in contact with a random person within the population. If the person
-%   met is healty and not immune, it gets in turn infected. 
+%   has the chance to infect same other people. If the person met is healty 
+%   and not immune, it gets in turn infected. 
 %   
 %   original author: Davide Grande
 %   date: 19-March-2020
