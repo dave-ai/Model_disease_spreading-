@@ -1,5 +1,14 @@
 %% Post-processing script 
+% Plots of the interesting simulation variables 
+%
+%   
+%   original author: Davide Grande
+%   date: 19-March-2020
+%
 
+
+
+%% printout of the totals 
 tot_healing 
 tot_hospitalized 
 tot_fatal_sickness 
@@ -7,7 +16,8 @@ tot_dead
 tot_immune 
 tot_infected
 
-%% daily plots 
+
+%% plots of the variables expressed per day (e.g. new infections per day ecc. )
 figure;
 subplot(3,2,1)
 plot(num_infected_per_day(1:plot_quant:end));
@@ -47,7 +57,7 @@ title('Number of daily new immune');
 xlabel('[days]')
 
 
-%% cumulative plots
+%% plots of the cumulative variables (e.g. cumulated infections up to date)
 figure;
 subplot(2,2,1)
 plot(num_infected_cumulative(1:plot_quant:end));
@@ -88,7 +98,7 @@ title('Number of patients sick in isolation');
 xlabel('[days]')
 
 
-%% plot per month 
+%% plot of the variable split per month 
 for iMonth = 1:num_months
 
     figure;
@@ -153,6 +163,6 @@ end
 
 figure
 plot(R0_time);
-title('R0 evolution over time');
+title('real R0 evolution over time');
 xlabel('[days]')
 
