@@ -5,7 +5,7 @@
 %
 
 % Generic parameters to be edited for the simulation
-num_months = 8;                 % [months]: timespan of the simulation 
+num_months = 6;                 % [months]: timespan of the simulation 
 num_popul = 10000000;           % number of the population (currently 10 milions people)
 max_number_trial = 1;           % how many 
 dbg_msg = false;                % set to true for additional printout information

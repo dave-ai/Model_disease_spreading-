@@ -291,10 +291,12 @@ end %ends cycle over days
 toc % toc of the simulation duration 
 
 %% save workspace
-save('ws_3'); 
-
+if saveWs
+    save(nameWs); 
+end
 
 %% E - post-processing 
-postProcessing; 
-
+if postpro
+    postProcessing; 
+end
 
