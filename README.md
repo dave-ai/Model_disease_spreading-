@@ -16,7 +16,9 @@ d) Once sick, each patient's disease course might follow different paths, i.e. s
 reqiring hospitalization or perishing. 
 e) Each survived person is then considered immune from further infections. 
 
-The visual of the state machine is reported hereby: 
+The visual description of the state machine is reported hereby: 
 ![picture](images/state_machine_person.jpg)
+
+
 
  
