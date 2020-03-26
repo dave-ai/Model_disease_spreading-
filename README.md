@@ -17,7 +17,7 @@ reqiring hospitalization or perishing.
 e) Each survived person is then considered immune from further infections. 
 
 The visual description of the state machine is reported hereby: 
-![picture](images/state_machine_person.jpg)
+![picture](https://github.com/dave-ai/Model_desease_spreading-/blob/master/images/state_machine_person.JPG)
 
 
 
