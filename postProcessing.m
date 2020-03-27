@@ -6,7 +6,6 @@
 %
 
 
-
 %% printout of the totals 
 tot_healing 
 tot_hospitalized 
@@ -16,7 +15,45 @@ tot_immune
 tot_infected
 
 
+
+%% plotting R0
+disp('postpro log: plotting R0');
+tic 
+
+R0_time = zeros(1,num_days);
+for iTime = 1:num_days
+   
+    num_new_infected = 0; %temporary variable: how many gets infected that day
+    tot_consequent_infected = 0; 
+    
+    for iPeople = 1:num_popul
+        if struct_people(1,iPeople).day_of_infection == iTime
+            num_new_infected = num_new_infected + 1;
+            tot_consequent_infected = tot_consequent_infected + struct_people(1,iPeople).infected_people; % summing up how many infections will derive form the ones infected today
+        end
+    end
+    
+    if num_new_infected >=1 
+        R0_time(1,iTime) = tot_consequent_infected / num_new_infected; 
+    end
+    
+end
+
+% cleaning up the RAM from the struct people (CAVEAT: it might weight up to
+% several GBs!)
+clear('struct_people');
+
+figure
+plot(R0_time);
+title('real R0 evolution over time');
+xlabel('[days]')
+toc
+
+
 %% plots of the variables expressed per day (e.g. new infections per day ecc. )
+disp('postpro log: plotting daily variables');
+tic 
+
 figure;
 subplot(3,2,1)
 plot(num_infected_per_day(1:plot_quant:end));
@@ -54,9 +91,12 @@ plot(num_immuned_per_day(1:plot_quant:end));
 grid on 
 title('Number of daily new immune');
 xlabel('[days]')
-
+toc
 
 %% plots of the cumulative variables (e.g. cumulated infections up to date)
+disp('postpro log: plotting cumulative variables');
+tic 
+
 figure;
 subplot(2,2,1)
 plot(num_infected_cumulative(1:plot_quant:end));
@@ -95,9 +135,11 @@ plot(num_currently_sick_in_isolation(1:plot_quant:end));
 grid on 
 title('Number of patients sick in isolation');
 xlabel('[days]')
-
+toc
 
 %% plot of the variable split per month 
+disp('postpro log: plotting monthly variables');
+tic 
 for iMonth = 1:num_months
 
     figure;
@@ -139,29 +181,6 @@ for iMonth = 1:num_months
     xlabel('[days]')
 
 end
+toc
 
-%% plotting R0
-R0_time = zeros(1,num_days);
-for iTime = 1:num_days
-   
-    num_new_infected = 0; %temporary variable: how many gets infected that day
-    tot_consequent_infected = 0; 
-    
-    for iPeople = 1:num_popul
-        if struct_people(1,iPeople).day_of_infection == iTime
-            num_new_infected = num_new_infected + 1;
-            tot_consequent_infected = tot_consequent_infected + struct_people(1,iPeople).infected_people; % summing up how many infections will derive form the ones infected today
-        end
-    end
-    
-    if num_new_infected >=1 
-        R0_time(1,iTime) = tot_consequent_infected / num_new_infected; 
-    end
-    
-end
-
-figure
-plot(R0_time);
-title('real R0 evolution over time');
-xlabel('[days]')
 
