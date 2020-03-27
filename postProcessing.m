@@ -73,7 +73,6 @@ grid on
 title('Number of daily new hospitalized');
 xlabel('[days]')
 
-
 subplot(3,2,4)
 plot(num_fatally_sick_per_day(1:plot_quant:end));
 grid on 

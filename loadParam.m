@@ -12,7 +12,7 @@ dbg_msg = false;                % set to true for additional printout informatio
 postpro = true;                 % set this variable to true if you need the plots at the end of the simu
 saveWs = false;                 % set this to true if you need the workspace to be saved
 nameWs = 'ws_1';                % set the name of the worspace to be saved
-% print_param = false;
+
 
 % A1) desease params - Covid-19 params 
 R0 = 2.28;                           % R0 denotes the number of people getting the infection from a sick person wondering around before he starts showing sympthoms and thus starts the quarantine
