@@ -78,10 +78,10 @@ end
 toc
 
 % C2) reset age and potential_infections
-disp('log: resetting age and infective days');
+disp('log: resetting infective days');
 tic
 for iPeople = 1:num_popul
-        struct_people(1,iPeople).age = randi(80, 1);
+%         struct_people(1,iPeople).age = randi(80, 1);
         number_infections = infectionPerPatient (R0, std_dev_R0); 
         struct_people(1,iPeople).potential_infections = round(number_infections);
 
