@@ -29,6 +29,8 @@ Being the code computationally expensive to be run for consistent populations (e
 | Master script used  | computational time [min] | RAM usage [GB] |     CPU    | number CPU cores | population size | simulation length [months] |
 | ------------------- | ------------------------ | -------------- | ---------- | ---------------- | --------------- | -------------------------- |
 |         v3          |            215           |       6.6      |   Core i7  |        8         |       10^7      |             6              |       
+| ------------------- | ------------------------ | -------------- | ---------- | ---------------- | --------------- | -------------------------- |
+|         v3          |            29            |       4        |   Core i7  |        8         |     550000    |             6              |       
 
 
  
