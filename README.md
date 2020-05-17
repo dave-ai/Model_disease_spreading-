@@ -45,7 +45,7 @@ Being the code computationally expensive to be run for consistent populations (e
 
 
 ## 6) CONTRIBUTORS
-The list of contributor is contained in [LICENSE](https://github.com/dave-ai/Model_disease_spreading-/NOTICE.md) file. 
+The list of contributor is contained in [NOTICE](https://github.com/dave-ai/Model_disease_spreading-/NOTICE.md) file. 
 
 
 ## 7) LICENSE
