@@ -1,15 +1,13 @@
 # Model_disease_spreading-
-MATLAB model simulating the spreading of a disease in a population. The model implements a population in which each individual is resembled by a state machine, transitioning in between health stati based on the different stages of the infection. 
-The model and its assumptions are currently tailored on the data available at March 2020.
-
-
 ## 1) BASIC RATIONALE
-MATLAB model of the spreading of a disease in a population.  
-The model implements a population in which each individual is resembled by a state machine, transitioning in between health stati based on the different stages of the infection.  
-The model is currently tailored on the data and on the possible outcomes that the Covid-19 infection might cause. 
-# Current model assumptions
-a) The people who get the virus and heal become immune and cannot get the virus a second time
+MATLAB model simulating the spreading of a disease in a population. 
+The model implements a population in which each individual is resembled by a state machine, transitioning in between health stati based on the different stages of the infection. 
+The model and its assumptions are currently tailored on the data available at March 2020. 
+### Current model assumptions
+a) The people who get the virus and heal become immune and cannot get the virus a second time.
 
+### Prerequisites
+Having MATLAB (no specific distribution required) installed on the machine.
 
 ## 2) HEALTH-STATUS STATE MACHINE DESCRIPTION
 a) Each person of the simulated population has an associated health status. 
@@ -45,6 +43,14 @@ Being the code computationally expensive to be run for consistent populations (e
 |         v3          |            <1            |       4        |   Core i7  |   Linux    |        8         |     10000       |             6              | 
 | ------------------- | ------------------------ | -------------- | ---------- | ---------- | ---------------- | --------------- | -------------------------- |
 
+
+## 6) CONTRIBUTORS
+The list of contributor is contained in [LICENSE](https://github.com/dave-ai/Model_disease_spreading-/NOTICE.md) file. 
+
+
+## 7) LICENSE
+
+Model_disease_spreading- is open-sourced under the GNU General Public License v3.0 license. See the [LICENSE](https://github.com/dave-ai/Model_disease_spreading-/LICENSE.md) file for details.
 
 
 
