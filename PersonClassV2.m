@@ -4,7 +4,7 @@ classdef PersonClassV2
 % It represents a person within the population
 %   inputs: [ healty sick infective sick_in_isolation ...
 %              fatal_sickness hospitalized healing dead immune age ... 
-%               potential_infections infected_people time_to_heal time_for_the_desease_to_activate]     
+%               potential_infections infected_people time_to_heal time_for_the_disease_to_activate]     
 %
 %   original author: Davide Grande
 %   date: 19-March-2020
@@ -24,9 +24,9 @@ classdef PersonClassV2
         potential_infections                % how many people can this person infect 
         infected_people                     % how many people has this person infected
         time_to_heal                        % [days]
-        time_for_the_desease_to_activate    % [days]
+        time_for_the_disease_to_activate    % [days]
         time_from_infection                 % [days]
-        time_from_desease_activation        % [days]
+        time_from_disease_activation        % [days]
         days_of_transmission                % array containing in which day the person will transmit the infection
         day_of_infection                    % day in which the person gets infected
       
@@ -52,9 +52,9 @@ classdef PersonClassV2
                 obj.potential_infections = 2;
                 obj.infected_people = 0;
                 obj.time_to_heal = 7;                        
-                obj.time_for_the_desease_to_activate = randomActivation(7);
+                obj.time_for_the_disease_to_activate = randomActivation(7);
                 obj.time_from_infection = 0;
-                obj.time_from_desease_activation = 0;
+                obj.time_from_disease_activation = 0;
                 obj.days_of_transmission = [-1 -1 -1];
                 obj.day_of_infection = -1;              % convention: -1 means that the person never get infected 
             else 
@@ -68,12 +68,12 @@ classdef PersonClassV2
                 obj.dead = in8;                                     
                 obj.immune = in9;       
                 obj.time_to_heal = in10;                              
-                obj.time_for_the_desease_to_activate = randomActivation(in11);      
+                obj.time_for_the_disease_to_activate = randomActivation(in11);      
                 obj.age = setAge();                             % to be overwritten
                 obj.potential_infections = 2;                   % to be overwritten
                 obj.infected_people = 0;                  
                 obj.time_from_infection = 0;
-                obj.time_from_desease_activation = 0;
+                obj.time_from_disease_activation = 0;
                 obj.day_of_infection = -1;              % convention: -1 means that the person never get infected 
 
             end
@@ -84,7 +84,7 @@ classdef PersonClassV2
 end
 
 function r = randomActivation(inputArg)
-    % this function draws a random activation time of the desease: it represents
+    % this function draws a random activation time of the disease: it represents
     % the time in which a patien has not sympthoms and therefore keeps
     % infecting surronding people 
     flag_iteration = true;

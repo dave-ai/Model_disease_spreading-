@@ -1,6 +1,6 @@
-# Model_desease_spreading-
+# Model_disease_spreading-
 ## 1) BASIC RATIONALE
-MATLAB model of the spreading of a desease in a population.  
+MATLAB model of the spreading of a disease in a population.  
 The model implements a population in which each individual is resembled by a state machine, transitioning in between health stati based on the different stages of the infection.  
 The model is currently tailored on the data and on the possible outcomes that the Covid-19 infection might cause. 
 
@@ -13,7 +13,7 @@ d) Once sick, each patient's disease course might follow different paths, i.e. s
 e) Each survived person is then considered immune from further infections. 
 
 The visual description of the state machine is reported hereby:
-![picture](https://github.com/dave-ai/Model_desease_spreading-/blob/master/images/state_machine_person.JPG)
+![picture](https://github.com/dave-ai/Model_disease_spreading-/blob/master/images/state_machine_person.JPG)
 
 ## 3) HOW TO USE ME
 Before launching a simulation, open the loadParam.m script and set up the parameters characterising the requested population.  

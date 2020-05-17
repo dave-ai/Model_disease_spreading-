@@ -1,9 +1,9 @@
-function [output] = deseaseCourse(person)
-%DESEASECOURSE establish what is the course of the desease of each patient;
+function [output] = diseaseCourse(person)
+%DISEASECOURSE establish what is the course of the disease of each patient;
 % it is based on the statistics data for Covid-19 available at March the
 % 19th 2020.
 %
-% The infected person might get a standard course of the desease with mild
+% The infected person might get a standard course of the disease with mild
 % sympthoms, might required to get hospitalized or might die
 %
 %   

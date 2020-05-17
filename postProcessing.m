@@ -46,6 +46,7 @@ clear('struct_people');
 figure
 plot(R0_time);
 title('real R0 evolution over time');
+grid on
 xlabel('[days]')
 toc
 

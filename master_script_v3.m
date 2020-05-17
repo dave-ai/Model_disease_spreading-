@@ -68,8 +68,8 @@ for iPeople = 1:num_popul
     
     flag_iteration = true;
     while flag_iteration
-        struct_people(1,iPeople).time_for_the_desease_to_activate = ceil(std_dev.*randn(1) + b);
-        if struct_people(1,iPeople).time_for_the_desease_to_activate >= 1 
+        struct_people(1,iPeople).time_for_the_disease_to_activate = ceil(std_dev.*randn(1) + b);
+        if struct_people(1,iPeople).time_for_the_disease_to_activate >= 1 
             flag_iteration = false; % the value is meaningful 
         end
     end
@@ -95,7 +95,7 @@ struct_people(1,1).day_of_infection = 0; % gets infected on day 0
 for iPeople = 1:num_popul
     
     for iInfections = 1:struct_people(1,iPeople).potential_infections
-        struct_people(1,iPeople).days_of_transmission(1,iInfections) = randi(struct_people(1,iPeople).time_for_the_desease_to_activate,1);
+        struct_people(1,iPeople).days_of_transmission(1,iInfections) = randi(struct_people(1,iPeople).time_for_the_disease_to_activate,1);
 
     end
 end
@@ -152,7 +152,7 @@ for iTime = 1:num_days
 
             
             % from infective to sick in isolation
-            if struct_people(1,iPeople).time_from_infection >= struct_people(1,iPeople).time_for_the_desease_to_activate
+            if struct_people(1,iPeople).time_from_infection >= struct_people(1,iPeople).time_for_the_disease_to_activate
 
                 struct_people(1,iPeople).health_status = 4; %sick in isolation
                 
@@ -160,12 +160,12 @@ for iTime = 1:num_days
                 diff_sick_in_isolation = diff_sick_in_isolation + 1;
                 
                 if dbg_msg
-                   msg3 = ['Person #', num2str(iPeople), ' , after ', num2str(struct_people(1,iPeople).time_from_infection), ' days of infection (out of ' , num2str(struct_people(1,iPeople).time_for_the_desease_to_activate) , ') feels sick and gets in isolation'];
+                   msg3 = ['Person #', num2str(iPeople), ' , after ', num2str(struct_people(1,iPeople).time_from_infection), ' days of infection (out of ' , num2str(struct_people(1,iPeople).time_for_the_disease_to_activate) , ') feels sick and gets in isolation'];
                    disp(msg3);
                 end
             end
             
-        % establishing which course of the desease 
+        % establishing which course of the disease 
         elseif struct_people(1,iPeople).health_status == 4
             
 %             struct_people(1,iPeople).sick_in_isolation = false;
@@ -175,11 +175,11 @@ for iTime = 1:num_days
                 disp(msgDeb1);
             end
             
-            % establishing which course of the desease 
-            struct_people(1,iPeople) = deseaseCourseV2(struct_people(1,iPeople));
+            % establishing which course of the disease 
+            struct_people(1,iPeople) = diseaseCourseV2(struct_people(1,iPeople));
             if struct_people(1,iPeople).health_status == 5 
                 if dbg_msg
-                    msgDeb1 = ['Person #', num2str(iPeople), ' has a standard course of the desease'];
+                    msgDeb1 = ['Person #', num2str(iPeople), ' has a standard course of the disease'];
                     disp(msgDeb1);
                 end
                 num_healed_per_day(1,iTime) = num_healed_per_day(1,iTime) + 1;
@@ -203,21 +203,21 @@ for iTime = 1:num_days
                   
         % healing people    
         elseif struct_people(1,iPeople).health_status == 5
-            if struct_people(1,iPeople).time_from_desease_activation >= days_of_quarantine
+            if struct_people(1,iPeople).time_from_disease_activation >= days_of_quarantine
                 struct_people(1,iPeople).health_status = 7;
                 num_immuned_per_day(1,iTime) = num_immuned_per_day(1,iTime) + 1;
                 tot_immune = tot_immune + 1;
                 diff_sick_in_isolation = diff_sick_in_isolation - 1;
 
                 if dbg_msg
-                    msgDeb1 = ['Person #', num2str(iPeople), ' was healing. After ', num2str(struct_people(1,iPeople).time_from_desease_activation), ' days, gets outside and immune.'];
+                    msgDeb1 = ['Person #', num2str(iPeople), ' was healing. After ', num2str(struct_people(1,iPeople).time_from_disease_activation), ' days, gets outside and immune.'];
                     disp(msgDeb1);
                 end
             end
             
         % hospitalized people
         elseif struct_people(1,iPeople).health_status == 6
-            if struct_people(1,iPeople).time_from_desease_activation >= days_of_heavy_disease
+            if struct_people(1,iPeople).time_from_disease_activation >= days_of_heavy_disease
                 struct_people(1,iPeople).health_status = 7;
                 num_immuned_per_day(1,iTime) = num_immuned_per_day(1,iTime) + 1;
                 diff_in_hospital = diff_in_hospital -1 ;
@@ -225,7 +225,7 @@ for iTime = 1:num_days
                 diff_sick_in_isolation = diff_sick_in_isolation - 1;
 
                 if dbg_msg
-                    msgDeb1 = ['Person #', num2str(iPeople), ' was in hospital. After ', num2str(struct_people(1,iPeople).time_from_desease_activation), ' days,gets outside and immune.'];
+                    msgDeb1 = ['Person #', num2str(iPeople), ' was in hospital. After ', num2str(struct_people(1,iPeople).time_from_disease_activation), ' days,gets outside and immune.'];
                     warning(msgDeb1);
                 end
 
@@ -233,7 +233,7 @@ for iTime = 1:num_days
                 
         % fatally infected people    
         elseif struct_people(1,iPeople).health_status == 8
-            if struct_people(1,iPeople).time_from_desease_activation >= days_of_quarantine
+            if struct_people(1,iPeople).time_from_disease_activation >= days_of_quarantine
                 struct_people(1,iPeople).health_status = 9;
                 num_dead_per_day(1,iTime) = num_dead_per_day(1,iTime) + 1;
                 tot_dead = tot_dead + 1;
@@ -241,7 +241,7 @@ for iTime = 1:num_days
 
                 
                 if dbg_msg
-                    msgDeb1 = ['Person #', num2str(iPeople), ' was having a fatal infection. After ', num2str(struct_people(1,iPeople).time_from_desease_activation), ' days, dies.'];
+                    msgDeb1 = ['Person #', num2str(iPeople), ' was having a fatal infection. After ', num2str(struct_people(1,iPeople).time_from_disease_activation), ' days, dies.'];
                     warning(msgDeb1);
                 end
             end
@@ -273,7 +273,7 @@ for iTime = 1:num_days
         % (i.e. alive, healing or hospitalized)
         if (struct_people(1,iPeople).health_status == 5 || struct_people(1,iPeople).health_status == 6 || ...
                 struct_people(1,iPeople).health_status == 8 ) 
-            struct_people(1,iPeople).time_from_desease_activation = struct_people(1,iPeople).time_from_desease_activation + 1;
+            struct_people(1,iPeople).time_from_disease_activation = struct_people(1,iPeople).time_from_disease_activation + 1;
         end
         
         
