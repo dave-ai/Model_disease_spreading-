@@ -1,8 +1,14 @@
 # Model_disease_spreading-
+MATLAB model simulating the spreading of a disease in a population. The model implements a population in which each individual is resembled by a state machine, transitioning in between health stati based on the different stages of the infection. 
+The model and its assumptions are currently tailored on the data available at March 2020.
+
+
 ## 1) BASIC RATIONALE
 MATLAB model of the spreading of a disease in a population.  
 The model implements a population in which each individual is resembled by a state machine, transitioning in between health stati based on the different stages of the infection.  
 The model is currently tailored on the data and on the possible outcomes that the Covid-19 infection might cause. 
+# Current model assumptions
+a) The people who get the virus and heal become immune and cannot get the virus a second time
 
 
 ## 2) HEALTH-STATUS STATE MACHINE DESCRIPTION
@@ -30,11 +36,17 @@ res/sim_500000_6_10_3_0
 ## 5) PERFORMANCES
 Being the code computationally expensive to be run for consistent populations (e.g. > 10^6 people), this section has the purpose to provide an approximate computational time required by the simulation based on the different parameters choices and hardware architectures. 
 
-| Master script used  | computational time [min] | RAM usage [GB] |     CPU    | number CPU cores | population size | simulation length [months] |
-| ------------------- | ------------------------ | -------------- | ---------- | ---------------- | --------------- | -------------------------- |
-|         v3          |            215           |       6.6      |   Core i7  |        8         |       10^7      |             6              |       
-| ------------------- | ------------------------ | -------------- | ---------- | ---------------- | --------------- | -------------------------- |
-|         v3          |            29            |       4        |   Core i7  |        8         |     550000    |             6              |       
+| Master script used  | computational time [min] | RAM usage [GB] |     CPU    |     OS     | number CPU cores | population size | simulation length [months] | 
+| ------------------- | ------------------------ | -------------- | ---------- | ---------- | ---------------- | --------------- | -------------------------- |
+|         v3          |            215           |       6.6      |   Core i7  |   Windows  |        8         |       10^6      |             6              |       
+| ------------------- | ------------------------ | -------------- | ---------- | ---------- | ---------------- | --------------- | -------------------------- |
+|         v3          |            29            |       4        |   Core i7  |   Windows  |        8         |     550000      |             6              |       
+| ------------------- | ------------------------ | -------------- | ---------- | ---------- | ---------------- | --------------- | -------------------------- |
+|         v3          |            <1            |       4        |   Core i7  |   Linux    |        8         |     10000       |             6              | 
+| ------------------- | ------------------------ | -------------- | ---------- | ---------- | ---------------- | --------------- | -------------------------- |
+
+
+
 
 
  
