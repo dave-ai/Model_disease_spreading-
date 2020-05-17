@@ -19,38 +19,52 @@ close all
 disp('log: loading parameters');
 tic
 loadParam;
+% parameters validity check
+if init_infected < 1 
+    warning('Number of people initially infected less than 1.');
+    warning('Please correct: "init_infected" parameter in "loadParam.m". Terminating simulation.');    
+    return
+end
+
+if init_in_hospitals > init_infected
+    warning('Number of people hospitalized greater than the infected ones.')
+    warning('Please correct: "init_in_hospitals" parameter in "loadParam.m". Terminating simulation.');    
+    return
+end
 
 
 %% B - initializing variables
 % B2) post-processing variables
-num_infected_cumulative = zeros(1,num_days);        % infested cumulative
+num_infected_cumulative = zeros(1,num_days);        % infected cumulative
 num_healed_cumulative = zeros(1,num_days);          % healed cumulativd 
 num_dead_cumulative = zeros(1,num_days);            % dead cumulative 
 num_hospitalized_cumulative = zeros(1, num_days);   % cumulative in hospital
-
 num_currently_in_hospital = zeros(1,num_days);      % numer of patients in hospitals
 num_currently_sick_in_isolation = zeros(1,num_days);% number of patients currently sick all isolation forms
 num_currently_sick_tot = zeros(1,num_days);         % number of patients currently sick (even the ones not aware)
 
 
 tot_healing = 0;
-tot_hospitalized = 0;
+tot_hospitalized = init_in_hospitals;
 tot_fatal_sickness = 0;
 tot_dead = 0;
-tot_immune = 0;
-tot_infected = 1; 
+tot_immune = init_immune;
+tot_infected = init_infected; 
 num_infected_per_day = zeros(1,num_days);           % infected per day
 num_healed_per_day = zeros(1,num_days);             % healed per day
 num_hospitalized_per_day = zeros(1,num_days);       % hospitalized per day 
 num_fatally_sick_per_day = zeros(1,num_days);       % new fatally sick per day
 num_dead_per_day = zeros(1,num_days);               % dead per day 
-num_immuned_per_day = zeros(1,num_days);            % become immune per day
+num_immuned_per_day = zeros(1,num_days);            % new immune per day
 
 
-% initializing first value of infection
-num_infected_per_day(1,1) = 1; 
-num_infected_cumulative(1,1) = 1;
-num_currently_sick_tot(1,1) = 1;
+% initializing first value of infection (day 1)
+num_hospitalized_cumulative = init_in_hospitals;
+num_currently_in_hospital = init_in_hospitals;
+num_currently_sick_in_isolation(1,1) = init_in_hospitals; % assumed only the ones in the hospitals
+num_currently_sick_tot(1,1) = init_infected;
+num_infected_per_day(1,1) = init_infected; 
+num_infected_cumulative(1,1) = init_infected;
 toc
 
 %% C - initializing people 
@@ -87,9 +101,24 @@ for iPeople = 1:num_popul
 
 end
 
-% C3) init case 0
-struct_people(1,1) = PersonClassV3(2, 14, 7);
-struct_people(1,1).day_of_infection = 0; % gets infected on day 0
+% C3) initialize the people that are infected
+for iPeople = 1:init_infected
+    struct_people(1,iPeople) = PersonClassV3(2, 14, 7); % overwriting the health_status
+    struct_people(1,iPeople).day_of_infection = 0; % gets infected on day 0
+end
+
+% C5) initialize the people in hospitals
+for iPeople = 1:init_in_hospitals
+     struct_people(1,iPeople) = PersonClassV3(6, 14, 7); % overwriting the health_status
+end
+
+% C6) initialize the immunes
+if init_immune >= 1
+    for iPeople = 1:init_immune
+         struct_people(1,num_popul-iPeople) = PersonClassV3(7, 14, 7); % overwriting the health_status - starting from the end of the list to avoid overlapping with the ones initialized as sick
+    end
+end
+
 
 % C4) days in which the person is infective  
 for iPeople = 1:num_popul
@@ -128,8 +157,9 @@ for iTime = 1:num_days
             
             % determine the possible new infections 
             if struct_people(1,iPeople).infected_people >= struct_people(1,iPeople).potential_infections
-                % do nothing 
-            else %still potential infections 
+                % do nothing - this person has exhausted his infection
+                % potential
+            else %still potential infective 
                 % check if today is one day of possible infections
                 for iInfection = 1:struct_people(1,iPeople).potential_infections
                     if struct_people(1,iPeople).time_from_infection == struct_people(1,iPeople).days_of_transmission(1,iInfection)
