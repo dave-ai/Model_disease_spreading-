@@ -22,6 +22,10 @@ Once that has been set up, run the master_script_vX.m script.
 
 ## 4) RESULTS
 Meaningful results are reported in the **res** folder. 
+Convention: save your result in a subfolder named: sim_#pupulation_#months_#init_infected_#init_in_hospitals_#init_immune.
+e.g. if you simulate a scenario with 500000 people, for 6 months, with 10 initial infections, 3 people in hospital and 0 immune, save the result in:
+res/sim_500000_6_10_3_0
+
 
 ## 5) PERFORMANCES
 Being the code computationally expensive to be run for consistent populations (e.g. > 10^6 people), this section has the purpose to provide an approximate computational time required by the simulation based on the different parameters choices and hardware architectures. 
