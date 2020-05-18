@@ -140,46 +140,48 @@ toc
 %% plot of the variable split per month 
 disp('postpro log: plotting monthly variables');
 tic 
-for iMonth = 1:num_months
+if plot_monthly_report
+    for iMonth = 1:num_months
 
-    figure;
-    subplot(3,2,1)
-    plot(num_infected_per_day(iMonth:plot_quant:(iMonth+1)));
-    grid on 
-    title(['Number of daily new infections - month # ', num2str(iMonth)]);
-    xlabel('[days]')
+        figure;
+        subplot(3,2,1)
+        plot(num_infected_per_day(iMonth:plot_quant:(iMonth+1)));
+        grid on 
+        title(['Number of daily new infections - month # ', num2str(iMonth)]);
+        xlabel('[days]')
 
-    subplot(3,2,2)
-    plot(num_healed_per_day(iMonth:plot_quant:(iMonth+1)));
-    grid on 
-    title(['Number of daily new healing - month # ', num2str(iMonth)]);    
-    xlabel('[days]')
+        subplot(3,2,2)
+        plot(num_healed_per_day(iMonth:plot_quant:(iMonth+1)));
+        grid on 
+        title(['Number of daily new healing - month # ', num2str(iMonth)]);    
+        xlabel('[days]')
 
-    subplot(3,2,3)
-    plot(num_hospitalized_per_day(iMonth:plot_quant:(iMonth+1)));
-    grid on 
-    title(['Number of daily new hospitalized - month # ', num2str(iMonth)]);   
-    xlabel('[days]')
+        subplot(3,2,3)
+        plot(num_hospitalized_per_day(iMonth:plot_quant:(iMonth+1)));
+        grid on 
+        title(['Number of daily new hospitalized - month # ', num2str(iMonth)]);   
+        xlabel('[days]')
 
 
-    subplot(3,2,4)
-    plot(num_fatally_sick_per_day(iMonth:plot_quant:(iMonth+1)));
-    grid on 
-    title(['Number of daily new fatally sick - month # ', num2str(iMonth)]);    
-    xlabel('[days]')
+        subplot(3,2,4)
+        plot(num_fatally_sick_per_day(iMonth:plot_quant:(iMonth+1)));
+        grid on 
+        title(['Number of daily new fatally sick - month # ', num2str(iMonth)]);    
+        xlabel('[days]')
 
-    subplot(3,2,5)
-    plot(num_dead_per_day(iMonth:plot_quant:(iMonth+1)));
-    grid on 
-    title(['Number of daily new dead - month # ', num2str(iMonth)]);    
-    xlabel('[days]')
+        subplot(3,2,5)
+        plot(num_dead_per_day(iMonth:plot_quant:(iMonth+1)));
+        grid on 
+        title(['Number of daily new dead - month # ', num2str(iMonth)]);    
+        xlabel('[days]')
 
-    subplot(3,2,6)
-    plot(num_immuned_per_day(iMonth:plot_quant:(iMonth+1)));
-    grid on 
-    title(['Number of daily new immunes - month # ', num2str(iMonth)]);    
-    xlabel('[days]')
+        subplot(3,2,6)
+        plot(num_immuned_per_day(iMonth:plot_quant:(iMonth+1)));
+        grid on 
+        title(['Number of daily new immunes - month # ', num2str(iMonth)]);    
+        xlabel('[days]')
 
+    end
 end
 toc
 
