@@ -45,12 +45,12 @@ Being the code computationally expensive to be run for consistent populations (e
 
 
 ## 6) CONTRIBUTORS
-The list of contributor is contained in [NOTICE](https://github.com/dave-ai/Model_disease_spreading-/NOTICE.md) file. 
+The list of contributor is contained in [NOTICE](https://github.com/dave-ai/Model_disease_spreading-/blob/master/NOTICE.md) file. 
 
 
 ## 7) LICENSE
 
-Model_disease_spreading- is open-sourced under the GNU General Public License v3.0 license. See the [LICENSE](https://github.com/dave-ai/Model_disease_spreading-/LICENSE.md) file for details.
+Model_disease_spreading- is open-sourced under the GNU General Public License v3.0 license. See the [LICENSE](https://github.com/dave-ai/Model_disease_spreading-/blob/master/LICENSE.md) file for details.
 
 
 
